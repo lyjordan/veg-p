@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
 
-default_scope {order('name_at DESC')}
+default_scope {order('name DESC')}
 #attr_accessible :description, :image_url, :price, :name, :discount, :category
   validates :name, :description, :image_url, presence: true
   validates :price, numericality: {greater_than_or_equal_to: 0.01}

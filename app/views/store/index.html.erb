@@ -23,7 +23,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+<script type="text/javascript" language="javascript" src="vasplus_programming_blog_shopping_cart_v4.js"></script>
+<link type="text/css" rel="stylesheet" media="all" href="vasplus_programming_blog_shopping_cart_v4.css" />
 </head>
 
 <body>
@@ -74,7 +75,7 @@
                 </div>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-7">
 
                 <div class="row carousel-holder">
 
@@ -114,13 +115,14 @@
                             
                             <%= image_tag(product.image_url,size:'300x150')%>
                                 <div class="caption">
-                                <h4 class="pull-right"><%= number_to_currency(product.price)%></h4>
                                 <h4><a href="#"><%= truncate(strip_tags(product.name), :length=>15)%></a>
                                 </h4>
                                 <%= sanitize truncate(strip_tags(product.description), :length=>80)%>
                             </div>
-                           <%= button_to 'Add to Cart', line_items_path(:product_id=>product)%>
-                            
+                           <div>
+                           <h4 class="pull-right"><%= number_to_currency(product.price)%></h4>
+                           <%= button_to 'Add to Cart', line_items_path(:product_id=>product),:remote=>true%>
+                            </div>
                             <div class="ratings">
                                 <p class="pull-right">15 reviews</p>
                                 <p>
@@ -146,7 +148,10 @@
                 </div>
 
             </div>
-
+ 			<div class="col-md-3">
+                <p class="lead">Shop Cart</p>
+              <%=render :partial=>"line_items/line_item" %>
+            </div>
         </div>
 
     </div>
